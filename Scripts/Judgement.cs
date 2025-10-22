@@ -10,14 +10,14 @@ public class Judgement : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.S)) CheckHit(new int[]{4,5});
         if (Input.GetKeyDown(KeyCode.D)) CheckHit(new int[]{2,3});
 
-        if (Input.GetMouseButtonDown(0)) Debug.Log("Mouse Left Slide");
-        if (Input.GetMouseButtonDown(1)) Debug.Log("Mouse Right Slide");
+        if (Input.GetMouseButtonDown(0)) scoreManager.AddScore("Perfect"); // 左鍵 slide
+        if (Input.GetMouseButtonDown(1)) scoreManager.AddScore("Perfect"); // 右鍵 slide
     }
 
     void CheckHit(int[] lanes) {
         float t = audio.GetSongTime();
-        // TODO: 找出最近的 note，比對時間差
-        float diff = 0.05f; // 假設差值
+        // TODO: 找出最近 note，比對時間差
+        float diff = 0.08f; // 假設差值
         if (diff <= 0.05f) scoreManager.AddScore("Perfect");
         else if (diff <= 0.1f) scoreManager.AddScore("Great");
         else if (diff <= 0.2f) scoreManager.AddScore("Good");
