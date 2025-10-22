@@ -1,0 +1,9 @@
+{
+  "bpm": 200,
+  "notes": [
+    { "time": 1.0, "type": "tap" },
+    { "time": 1.5, "type": "tap" },
+    { "time": 2.0, "type": "tap" },
+    { "time": 2.5, "type": "tap" }
+  ]
+}
