@@ -24,13 +24,11 @@ public class GameManager : MonoBehaviour {
         uiManager.UpdateScore(0);
         uiManager.UpdateCombo(0);
 
-        audioManager.Play();
         Debug.Log("Game Started!");
     }
 
     void EndGame() {
         gameEnded = true;
-        Debug.Log("Game Ended! Final Score: " + scoreManager.score);
         uiManager.ShowJudgement("Game Over\nScore: " + scoreManager.score);
     }
 }
