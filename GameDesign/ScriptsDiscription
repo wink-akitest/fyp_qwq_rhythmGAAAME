@@ -5,3 +5,59 @@
 - Note.cs → 控制音符下落
 - Judgement.cs → 玩家輸入 + 判定
 - ScoreManager.cs → 分數 & Combo 系統
+
+
+[玩家按下 SPACE]
+        │
+        ▼
+[StartMenu] 隱藏提示文字
+        │
+        ▼
+[GameManager.StartGame()]
+  - 重置分數、Combo
+  - 準備遊戲流程
+        │
+        ▼
+(延遲 songDelay 秒)
+        │
+        ▼
+[AudioManager.Play()]
+  - 音樂開始播放
+        │
+        ▼
+[NoteSpawner.Update()]
+  - 檢查譜面 note.time
+  - 提前 spawnAhead 秒生成音符
+        │
+        ▼
+[Note (Prefab)]
+  - 自己往下掉落
+        │
+        ▼
+[玩家按 WASD]
+        │
+        ▼
+[HitDetector.CheckHit(lane)]
+  - 找最近的音符
+  - 計算時間差
+  - 判定 Perfect / Great / Good / Miss
+        │
+        ▼
+[ScoreManager]
+  - 加分 / Combo++
+  - 或 Combo 歸零
+        │
+        ▼
+[UIManager]
+  - 更新分數、Combo
+        │
+        ▼
+[HitDirector]
+  - 顯示判定文字 (Perfect/Good/Miss)
+        │
+        ▼
+[AudioManager.music 播放結束]
+        │
+        ▼
+[GameManager.EndGame()]
+  - 顯示 Game Over + 最終分數
