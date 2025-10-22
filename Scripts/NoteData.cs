@@ -1,16 +1,15 @@
-[System.Serializable]
+using System;
+using System.Collections.Generic;
+
+[Serializable]
 public class NoteData {
-    public float time;       // 出現時間 (秒)
-    public int lane;         // 1–8
-    public string type;      // "tap", "hold", "slide"
-    public float duration;   // hold 長度 (可選)
-    public string direction; // slide 方向 (可選)
+    public float time;
+    public int lane;   // 0=A, 1=S, 2=D, 3=F
+    public string type; // "tap", "hold", "slide"
 }
 
-[System.Serializable]
+[Serializable]
 public class Chart {
-    public string title;
-    public string artist;
     public float bpm;
-    public NoteData[] notes;
+    public List<NoteData> notes;
 }
