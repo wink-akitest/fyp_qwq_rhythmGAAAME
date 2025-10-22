@@ -14,7 +14,7 @@ public class NoteSpawner : MonoBehaviour {
             if (audio.GetSongTime() >= noteTime - spawnAhead) {
                 Vector3 pos = new Vector3(loader.chart.notes[index].lane - 4.5f, 5, 0);
                 GameObject n = Instantiate(notePrefab, pos, Quaternion.identity);
-                n.GetComponent<Note>().targetTime = noteTime;
+                n.GetComponent<Note>().Init(loader.chart.notes[index]);
                 index++;
             }
         }
