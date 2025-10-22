@@ -1,0 +1,204 @@
+1,1,1,1,1,1,1,1,1,1,1,1,1,】 represents a chart with 10 TAP notes at BUTTON-1, in the density of 1 note per second.
+
+Since the timing of the beginning of the chart should be determined precisely and accurately,
+a number with decimal places such as 1.234 seconds is usually used.
+If "first" is 1.234 seconds, then the same 【1,1,1,1,1,1,1,1,1,1,1,】 chart
+will have 10 TAP notes at BUTTON-1 at 1.234, 2.234, 3.234, ..., and 10.234 seconds, respectively, after the music begins playing.
+
+The end of a chart is denoted by an "E".
+If "first" is 1.234 seconds and the chart definition is 【1,1,1,1,1,1,1,1,1,1,1,1,1,E】,
+the chart progresses until 10.234 seconds, as described above,
+and since the last comma also has a length of 1 second, the chart ends at 11.234 seconds.
+
+How to Define the BPM
+(120)
+Input the BPM value and enclose it in a pair of round brackets.
+Since the BPM value should be accurate, a number with decimal places can be used.
+
+How to Define the Length Divider
+{2}
+Input the dividing value and enclose it in a pair of curly brackets.
+E.g., "{4}" specifies the per-comma length to be a quarter note, "{8}" to be an 8th note,
+and "{1}" to be the whole note.
+A number with decimal places can be used but should be avoided because it may cause confusions.
+
+
+The BPM must be defined before the length divider.
+Because the length of notes cannot be calculated unless the BPM value is defined,
+when these two parameters are defined together, the length divider should come after the BPM.
+
+E.g., 【(120){2}】 specifies the per-comma length to be a half note at 120 BPM (exactly 1 second).
+If the BPM value is B and the length divider is T, the per-comma length can be calculated using the following formula:
+Per-comma length = 240 / B / T (seconds).
+
+Depending on the music, there might be cases where charting to a special sound effect or so with unknown BPM is attempted or matching the vocals precisely is desired.
+In these cases, 【{#0.35}】, for example, can be used, and the per-comma length after this will become 0.35 seconds.
+When this notation is used, the per-comma length is already determined, so there is no need to specify the length divider.
+
+TAP that occurs at BUTTON-1 ... 【1,】
+TAP that occurs at BUTTON-5 ... 【5,】
+To change a TAP into a BREAK TAP, add a "b" before the comma, e.g., 【1b,】, 【5b,】.
+
+HOLD that occurs at BUTTON-5 with the held-down length of one half note
+... 【5h[2:1],】
+HOLD that occurs at BUTTON-4 with a held-down length of 5.678 seconds ... 【4h[#5.678],】
+HOLD that occurs at BUTTON-4 with a held-down length of one half note at 150 BPM ... 【4h[150#2:1],】
+To change a HOLD into a BREAK HOLD, add a "b" after the "h" like 【5hb[2:1],】.
+It does not matter whether the "h" and the "b" are swapped, as in 【5bh[2:1],】.
+
+BUTTON-1 to BUTTON-4, straight shape, tracing length of 3 8th notes
+... 【1-4[8:3],】
+
+Status ... BUTTON-1 to BUTTON-4, straight shape, 120 BPM
+
+Waiting time is one beat at 160 BPM, tracing length is three 8th notes at 160 BPM ... 【1-4[160#8:3],】
+Waiting time is one beat at 160 BPM, tracing length is 2 seconds ... 【1-4[160#2],】
+Waiting time is 3 seconds, tracing length is 1.5 seconds ... 【1-4[3##1.5],】
+Waiting time is 3 seconds, tracing length is three 8th notes at current BPM ... 【1-4[3##8:3],】
+Waiting time is 3 seconds, tracing length is three 8th notes at 160 BPM ... 【1-4[3##160#8:3],】
+
+"-" ... Straight shape
+Connects the start to the end in a straight line.
+
+">", "<", "^" ... Arc shape
+Connects the start to the end along the circled judgment line.
+If the direction of travel is to the right, use ">". If left, use "<".
+If the distance is shorter than half the circle, "^" can be used and thinking of the direction is thus not needed.
+
+"v" ... v-shape
+Connects the start to the end through the screen center as the turning point in two straight lines.
+
+"p", "q" ... p-shape, q-shape
+Connects the start to the end while curving around the screen center.
+
+"s", "z" ... Thunderbolt shape
+Connects the start to the end with three short lines in the shape of a thunderbolt symbol (⚡).
+
+"pp", "qq" ... Grand p-shape, Grand q-shape
+Connects the start to the end while curving along an imaginary circle which is tangent to both the screen center and the circled judgment line.
+
+"V" ... Grand v-shape
+Connects the start to the end through a middle turning point in two straight lines.
+The line connecting the start to the middle turning point is always a short straight line.
+
+"w" ... Fan shape
+Connects the start to three ends in an expanding track in a shape similar to a folding hand fan. Three tracing stars going to each end are spawn for this SLIDE shape.
+
+Starting point is BUTTON-1, turning point is BUTTON-3, ending point is BUTTON-5
+... 【1V35】
+
+To change the track of a SLIDE into a BREAK SLIDE, add a "b" after the "]" like 【1-4[8:3]b,】.
+
+BUTTON-1 to BUTTON-4, straight shape, tracing length of 3 4th notes, plus
+BUTTON-1 to BUTTON-6, arc shape, tracing length of 5 8th notes
+... 【1-4[4:3]*-6[8:5],】
+
+BUTTON-1 to BUTTON-4 with straight shape, BUTTON-4 to BUTTON-7 with q-shape,
+BUTTON-7 to BUTTON-2 with straight shape, tracing length of two whole notes
+... 【1-4q7-2[1:2],】
+
+In such cases, the tracing length for each SLIDE arrow track can be specified like
+【1-4[2:1]q7[2:1]-2[1:1],】.
+
+To change it to BREAK SLIDE, add a "b" after the "]", which the same as for regular SLIDE.
+It is not possible to make only a section of chaining SLIDE into BREAK SLIDE.
+A chaining SLIDE note can only be either a normal SLIDE or a complete BREAK SLIDE.
+Therefore, even when different tracing speeds can be specified for some of the SLIDE arrow tracks, the "b" can be added only after the last "]".
+
+https://img.atwiki.jp/simai/attach/1003/52/bg.jpg
+TOUCH that occurs at SENSOR-B1 ... 【B1,】
+TOUCH that occurs at SENSOR-D4 ... 【D4,】
+
+The sensor in the center is divided into two areas, C1 and C2.
+However, no TOUCHes appear separately for each of them, instead a TOUCH appears in the middle of the areas.
+Therefore, a TOUCH that occurs in the center can be denoted as 【C,】 without numbering.
+Denoting this as either 【C1,】 or 【C2,】 causes no errors and is treated the same as 【C,】.
+
+TOUCH HOLD that occurs at SENSOR-C with held-down length of 3 4th notes
+... 【Ch[4:3],】
+
+TOUCH that occurs at SENSOR-B7 with firework effect ... 【B7f,】
+TOUCH HOLD that occurs at SENSOR-C with held-down length of two whole notes with firework effect ... 【Chf[1:2],】
+
+TAP at BUTTON-1 and HOLD at BUTTON-8 with held-down length of one half note
+... 【1/8h[2:1],】
+
+Their order does not matter, so the notation 【8h[2:1]/1,】 works fine.
+However, for SLIDEs, for example, in 【1-4[8:1]/2-6[8:1],】, 【1-4[8:1]】 will be displayed as if it occurred before 【2-6[8:1]】.
+In other words, the SLIDE defined earlier will be displayed as if it occurred earlier.
+
+Three or more elements are also treated as an EACH and can be denoted as note A / note B / note C ...
+
+Only EACHes composing of only non-BREAK TAPs can be denoted like 【12】 without the "/".
+The "/" between each note cannot be omitted even if there is only a single non-TAP or BREAK note within the EACH.
+
+EX-TAP at BUTTON-1 ... 【1x,】
+EX-HOLD at BUTTON-3 ... 【3hx[α:β],】
+EX-BREAK at BUTTON-5 ... 【5bx,】
+EX-BREAK HOLD at BUTTON-7 ... 【7bxh[α:β],】
+
+When two or more of "x", "h", and "b" characters are specified together, they can be specified in any order.
+
+A BUTTON-1 TAP is denoted as 【1,】. But if a "$" is appended and denoted as 【1$,】,
+it changes into a star-shaped TAP that would appear if a SLIDE were placed.
+
+This can be used in conjunction with a BREAK TAP or an EX-TAP.
+When two or more of "$", "b", and "x" characters are specified together, they can be specified in any order.
+
+Also, if two "$" are stacked to form "$$", the star-shaped TAP rotates.
+Currently, the rotation speed of the star-shaped TAP is a pre-defined constant.
+
+When a SLIDE is described as 【1-5[8:1],】, the BUTTON-1 TAP automatically changes into a star-shaped TAP, 
+but if a "@" is appended to the star-shaped TAP as in 【1@-5[8:1],】, this star-shaped TAP changes back into a normal TAP.
+The SLIDE is processed as usual, so the SLIDE arrow track appears to start from the normal TAP.
+
+This can be used in conjunction with a BREAK TAP or an EX-TAP too.
+When two or more of "@", "b", and "x" characters are specified together, they can be specified in any order.
+
+Assuming there is a HOLD denoted by 【3h[1:1],】, if its held-down length is shortened to the limit,
+the required held-down length becomes instant,
+and the visual length of the HOLD shrinks as well, giving it the appearance of a hexagonal TAP.
+Although such a HOLD can be denoted like 【3h[1000:1],】,
+it can be easily denoted by removing the held-down length notation like 【3h,】.
+
+The same notation can be used for TOUCH HOLD.
+For example, a TOUCH HOLD denoted as 【Ch,】 gives a judgment instantly when hit.
+
+This can be used to denote a pseudo TAP or pseudo TOUCH.
+Note that this notation is treated internally as if 【[1280:1]】 were specified.
+It is because the held-down length of such notes is implied to be set to the length of a 1280th note in the official fan book sold by SEGA.
+
+{96}
+1,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+{8}
+~~~~~~
+
+In the above example, the 96th note length divider was used for the timing gap,
+and specifying the notes to be closer to each other would be even harder.
+When strictly reproducing an official chart, this made it infeasible,
+and when creating a fan-made chart, this could be troublesome.
+
+In this case, 【1`2,】 can be used. It makes the BUTTON-2 TAP placed only slightly later than the BUTTON-1 TAP but still almost simultaneous.
+
+The BUTTON-2 TAP is processed internally as a TAP that is 1 millisecond later than the BUTTON-1 TAP.
+Since they are not exactly simultaneous to become a part of an EACH,
+the two TAPs do not turn yellow and do not count as an EACH on the play result.
+For example, in 【1`2`3/4,】, a BUTTON-2 TAP is placed 1 millisecond after the BUTTON-1 TAP,
+and an EACH composing of a BUTTON-3 TAP and a BUTTON-4 TAP is placed another 1 millisecond after the BUTTON-2 TAP.
+
+Note that, the "`" symbol can be entered by holding down Shift and pressing the "@" key right to the "P" key on a JIS layout keyboard
+and also by directly pressing the "`" key left to the "1" key on a US or UK layout keyboard.
+
+When a SLIDE is placed, a star-shaped TAP normally always appears and approaches to the SLIDE's starting point, but this approaching star-shaped TAP can be eliminated.
+
+Assume that there is a SLIDE denoted by 【1-5[2:1],】.
+
+The tracing star fades in before starting to move ... 【1?-5[2:1],】
+The tracing star does not fade in and suddenly appears when it begins to move ... 【1!-5[2:1],】
+
+In both cases, the SLIDE arrow track fades in and the approaching star-shaped TAP does not appear.
+For creating a chart that letters, symbols, etc. are drawn using SLIDEs,
+it is recommended to use "?" to make it clear where to start tracing.
+For creating a chart with single-stroke SLIDEs, using "!" is recommended to avoid displaying extra stars on the screen.
+
+https://w.atwiki.jp/simai/pages/1003.html
