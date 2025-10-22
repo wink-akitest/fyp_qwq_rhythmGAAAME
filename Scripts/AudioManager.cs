@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
     public AudioSource music;
-    private double startTime;
 
-    void Start() {
-        startTime = AudioSettings.dspTime;
-        music.PlayScheduled(startTime);
+    public void Play() {
+        music.Play();
     }
 
-    public double GetSongTime() {
-        return AudioSettings.dspTime - startTime;
+    public float GetSongTime() {
+        return music.time;
     }
 }
