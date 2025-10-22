@@ -9,10 +9,11 @@ public class NoteSpawner : MonoBehaviour {
     private int index = 0;
 
     void Update() {
-        if (index < loader.chart.notes.Count) {
+        if (index < loader.chart.notes.Length) {
             float noteTime = loader.chart.notes[index].time;
             if (audio.GetSongTime() >= noteTime - spawnAhead) {
-                GameObject n = Instantiate(notePrefab, transform.position, Quaternion.identity);
+                Vector3 pos = new Vector3(loader.chart.notes[index].lane - 4.5f, 5, 0);
+                GameObject n = Instantiate(notePrefab, pos, Quaternion.identity);
                 n.GetComponent<Note>().targetTime = noteTime;
                 index++;
             }
