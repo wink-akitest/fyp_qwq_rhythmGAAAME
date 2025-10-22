@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Judgement : MonoBehaviour {
     public AudioManager audio;
+    public ScoreManager scoreManager;
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.W)) CheckHit(new int[]{1,8});
@@ -15,7 +16,11 @@ public class Judgement : MonoBehaviour {
 
     void CheckHit(int[] lanes) {
         float t = audio.GetSongTime();
-        Debug.Log("Pressed at " + t + " for lanes " + string.Join(",", lanes));
-        // TODO: 比對 note.targetTime，計算 Perfect/Great/Good/Miss
+        // TODO: 找出最近的 note，比對時間差
+        float diff = 0.05f; // 假設差值
+        if (diff <= 0.05f) scoreManager.AddScore("Perfect");
+        else if (diff <= 0.1f) scoreManager.AddScore("Great");
+        else if (diff <= 0.2f) scoreManager.AddScore("Good");
+        else scoreManager.AddScore("Miss");
     }
 }
