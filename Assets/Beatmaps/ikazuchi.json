@@ -4,6 +4,10 @@
     { "time": 1.0, "type": "tap" },
     { "time": 1.5, "type": "tap" },
     { "time": 2.0, "type": "tap" },
-    { "time": 2.5, "type": "tap" }
+    { "time": 2.5, "type": "tap" },
+    { "time": 3.0, "type": "tap" },
+    { "time": 3.5, "type": "tap" },
+    { "time": 4.0, "type": "tap" },
+    { "time": 4.5, "type": "tap" }
   ]
 }
