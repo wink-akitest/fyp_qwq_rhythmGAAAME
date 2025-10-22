@@ -1,0 +1,7 @@
+- NoteData.cs → 定義譜面資料結構
+- ChartLoader.cs → 讀取 JSON 譜面
+- AudioManager.cs → 播放音樂、提供時間
+- NoteSpawner.cs → 根據 JSON 生成音符
+- Note.cs → 控制音符下落
+- Judgement.cs → 玩家輸入 + 判定
+- ScoreManager.cs → 分數 & Combo 系統
