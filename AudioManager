@@ -1,0 +1,13 @@
+public class AudioManager : MonoBehaviour {
+    public AudioSource music;
+    double startTime;
+
+    void Start() {
+        startTime = AudioSettings.dspTime;
+        music.PlayScheduled(startTime);
+    }
+
+    public double GetSongTime() {
+        return AudioSettings.dspTime - startTime;
+    }
+}
