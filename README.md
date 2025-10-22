@@ -19,7 +19,7 @@
 - 使用 Unity Hub 建立 2D 專案 (建議 Unity 2021 LTS 以上)。
 - 將本 repo clone 下來：
 
-git clone https://github.com/yourname/MindChasingPrototype.git
+git clone https://github.com/wink-akitest/fyp_qwq_rhythmGAAAME.git
 
 在 Unity 中打開專案。
 在場景中放置：
