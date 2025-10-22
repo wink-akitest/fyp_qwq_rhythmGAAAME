@@ -3,6 +3,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour {
     public int score = 0;
     public int combo = 0;
+    public UIManager ui;
 
     public void AddScore(string judgement) {
         switch (judgement) {
@@ -22,6 +23,9 @@ public class ScoreManager : MonoBehaviour {
                 combo = 0;
                 break;
         }
-        Debug.Log(judgement + " | Score: " + score + " | Combo: " + combo);
+
+        ui.UpdateScore(score);
+        ui.UpdateCombo(combo);
+        ui.ShowJudgement(judgement);
     }
 }
