@@ -1,0 +1,14 @@
+public class NoteSpawner : MonoBehaviour {
+    public GameObject notePrefab;
+    public AudioManager audio;
+    public float spawnAhead = 2f; // 提前生成時間
+    private List<float> notes = new List<float>{1f,2f,3f,4f};
+    private int index = 0;
+
+    void Update() {
+        if (index < notes.Count && audio.GetSongTime() >= notes[index] - spawnAhead) {
+            Instantiate(notePrefab, transform.position, Quaternion.identity);
+            index++;
+        }
+    }
+}
